@@ -5,10 +5,10 @@
 
     En este archivo cree la primer clase de clientes.
     Atributos: Nombre, Género, Edad, Peso, Altura y si
-    esta inscrito o no.
+    esta pago o no.
     Métodos: incluí getters y setters para los atributos.
     Pero otros métodos son, aumenta la edad, y calcula
-    si el usuario tiene deuda o no. 
+    la deuda y/o el pago del cliente. 
 */
 #ifndef CLIENTE_H_
 #define CLIENTE_H_
@@ -88,7 +88,6 @@ Cliente::Cliente(string n,int i,char gen, int e, float p, double a, bool pag){
 }
 
 //En esta parte del programa se crean todos los getters
-
 string Cliente::get_nombre()const{
   return nombre;
 }
@@ -119,7 +118,6 @@ bool Cliente::get_pago(){
 
 //Aquí se crean los setters, para los valores que 
 //necesitarían ser modificados.
-
 void Cliente::set_peso(float nuevo_peso){
   peso=nuevo_peso;
 }
@@ -138,8 +136,9 @@ int Cliente::aumentar_edad(int tiempo){
   return edad;
 }
 
-//Esta función indica si el usuario debe la mensualidad del
-//mes dependiendo si ya hizo el pago o no. 
+
+//Esta función calcula el pago por mes del cliente en el caso
+//de que si haya realizado el pago.
 float Cliente::pago_cant(){
   float pago_cant;
   if (pago==false){
@@ -150,6 +149,8 @@ float Cliente::pago_cant(){
   return pago_cant;
 }
 
+//Esta función indica si el usuario debe la mensualidad del
+//mes dependiendo si ya hizo el pago o no. 
 float Cliente::deuda(){
   float deuda;
   deuda=0;
@@ -161,9 +162,11 @@ float Cliente::deuda(){
   return deuda;
 }
 
+//Esta función crea una cadena que imprime el nombre y el
+//número de cliente, que es lo que queremos imprimir. 
 string Cliente::cadena(){
   stringstream aux;
-  aux << "Su nombre es " << nombre << ", el id es " << id << "\n";
+  aux << "Su nombre es " << nombre << ", el número de cliente es " << id << "\n";
   return aux.str();
 }
 
